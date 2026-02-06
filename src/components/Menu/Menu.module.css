@@ -1,0 +1,13 @@
+.list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    font-size: 20px;
+}
+
+li a {
+    color: white;
+  }

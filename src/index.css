@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Gravitas+One&family=Michroma&display=swap');
 
 :root {
+  padding: 0;
+
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -16,12 +18,7 @@
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  text-decoration: none;
 }
 
 body {

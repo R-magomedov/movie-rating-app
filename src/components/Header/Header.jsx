@@ -1,12 +1,16 @@
 import React from 'react'
 import Logo from '../Logo/Logo'
 import styles from './Header.module.css'
+import Menu from '../Menu/Menu'
 
 const Header = () => {
-  return <header className={styles.header}>
-    <Logo />
-    <h1>КиноРейтинг</h1>
-    <img src="/vite.svg" alt="" />
+  return <header>
+    <div className={styles.header}>
+      <Logo />
+      <h1>КиноРейтинг</h1>
+      <img src="/vite.svg" alt="" />
+    </div>
+    <Menu />
   </header>
 }
 
