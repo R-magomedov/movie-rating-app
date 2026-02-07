@@ -10,33 +10,47 @@ import { top100movies } from './constants/top100movies'
 import { MovieList } from './components/MovieList/MovieList'
 import LoginForm from './components/LoginForm/LoginForm'
 import Reviews from './components/Reviews/Reviews'
+import { TranslateContex, Translates } from './Contex/TranslationContex/TranslationContex'
+import { useState } from 'react'
+import ThemeProvider from './Contex/ThemeContext/ThemeProvider'
 
 function App() {
-const isLoggedIn = true 
+const isLoggedIn = true; 
+const [lang, setLang] = useState('ru');
+function changeLang() {
+  setLang((prevLang) => prevLang === 'ru' ? 'en' : 'ru');
+}
 
   return (
-    <>
-      <Header/>
-      <Routes> {/* сюда складываю все возможные маршруты */}
-        <Route path="/" element={<Main />} /> {/*аналогия: if (url === '/') return <Main /> */}
-        <Route path="/movies/:id" element={<MovieCard movieList={top100movies}/>} />
-        <Route path="/about" element={<About />}>
-          <Route path="contacts" element={<div>Контакты</div>} />
-          <Route path="address" element={<div>Адрес</div>} />
-        </Route>
-        <Route path="/movies" element={
-          isLoggedIn ? (
-          <MovieList movieList={top100movies} />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }/>
-        <Route path="/reviews" element={<Reviews />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="*" element={<div>Страница не найдена</div>} />
-      </Routes>
-      <Footer/>
-    </>
+    <ThemeProvider>
+      <TranslateContex.Provider value={{
+        translation: Translates[lang],
+        changeLang: changeLang
+        }}>
+        <>
+          <Header/>
+          <Routes> {/* сюда складываю все возможные маршруты */}
+            <Route path="/" element={<Main />} /> {/*аналогия: if (url === '/') return <Main /> */}
+            <Route path="/movies/:id" element={<MovieCard movieList={top100movies}/>} />
+            <Route path="/about" element={<About />}>
+              <Route path="contacts" element={<div>Контакты</div>} />
+              <Route path="address" element={<div>Адрес</div>} />
+            </Route>
+            <Route path="/movies" element={
+              isLoggedIn ? (
+              <MovieList movieList={top100movies} />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }/>
+            <Route path="/reviews" element={<Reviews />} />
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="*" element={<div>Страница не найдена</div>} />
+          </Routes>
+          <Footer/>
+        </>
+      </TranslateContex.Provider>
+    </ThemeProvider>
   )
 }
 

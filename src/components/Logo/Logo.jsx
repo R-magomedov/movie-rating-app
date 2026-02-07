@@ -3,7 +3,7 @@ import styles from'./Logo.module.css'
 
 const Logo = () => {
   return (
-    <div className={styles.logo}>MovieRating</div>
+    <div className={styles.logo}>M-R</div>
   )
 }
 
